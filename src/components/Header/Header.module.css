@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* --------------------------------------- */
+
+header {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    font-family: "Lexend Deca", serif;
+    font-weight: bold;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.sectionHeader {
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.sectionHeader ul li {
+    font-size: 1.08em;
+    display: inline-flex;
+}
+
+.sectionHeader ul li {
+    color: #fff;
+    text-decoration: none;
+    margin: 20px;
+    transition: 0.1s;
+}
+
+/* .sectionHeader ul li:hover {
+    color: #A5ABAF;
+    cursor: pointer;
+} */
+
+li {
+    background-image: linear-gradient(
+      to right,
+      #58bbda,
+      #58bbda 50%,
+      #ffffff 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  li:before{
+    content: '';
+    background: #58bbda;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  li:hover {
+   background-position: 0;
+   cursor: pointer;
+  }
+  
+  li:hover::before{
+    width: 100%;
+  }
