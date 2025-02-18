@@ -21,7 +21,7 @@ header {
     font-weight: bold;
 }
 
-section {
+.sectionHeader {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,8 +55,8 @@ section {
 li {
     background-image: linear-gradient(
       to right,
-      #58bbda,
-      #58bbda 50%,
+      #58dad4,
+      #58dad4 50%,
       #ffffff 50%
     );
     background-size: 200% 100%;
@@ -69,9 +69,10 @@ li {
     transition: all 0.3s ease-in-out;
   }
   
+/*   
   li:before{
     content: '';
-    background: #58bbda;
+    background: #58dad4;
     display: block;
     position: absolute;
     bottom: -3px;
@@ -79,7 +80,7 @@ li {
     width: 0;
     height: 3px;
     transition: all 0.3s ease-in-out;
-  }
+  } */
   
   li:hover {
    background-position: 0;

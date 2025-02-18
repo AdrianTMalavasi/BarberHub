@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+
+footer {
+    height: 130px;
+    background: black;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lexend Deca", serif;
+    bottom: 0;
+}
+
+@media screen and (max-width: 460px) {
+    footer {
+        height: 80px;
+        font-size: 10px;
+    }
+}
