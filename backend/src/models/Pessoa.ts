@@ -24,25 +24,25 @@ export abstract class Pessoa {
         this._endereco = endereco;
     }
 
-    getId(): number {
+    get id(): number {
         return this._id;
     }
 
-    getNome(): string {
+    get nome(): string {
         return this._nome;
     }
 
-    setNome(nome: string | undefined) {
+    set nome(nome: string | undefined) {
         if (nome && nome.trim() !== "") {
             this._nome = nome;
         }
     }
 
-    getSenha(): string {
+    get senha(): string {
         return this._senha;
     }
 
-    setSenha(senha: string | undefined) {
+    set senha(senha: string | undefined) {
         if (senha !== undefined && senha.trim() !== "") {
             this._senha = senha;
         }

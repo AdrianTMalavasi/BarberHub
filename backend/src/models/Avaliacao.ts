@@ -1,6 +1,6 @@
 import { Cliente } from "./Cliente";
 
-export class Avalicao {
+export class Avaliacao {
     private _nota : number;
     private _comentario : string;
     private _dataAvaliacao : Date;

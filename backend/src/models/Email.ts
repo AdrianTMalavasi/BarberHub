@@ -5,11 +5,11 @@ export class Email {
         this._email = email;
     }
 
-    getEmail(): string {
+    get email(): string {
         return this._email;
     }
 
-    setEmail(email: string | undefined) {
+    set email(email: string | undefined) {
         if (email && email.includes("@")) {
             this._email = email;
         }

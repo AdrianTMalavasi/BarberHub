@@ -1,10 +1,12 @@
+import { CEP } from "./Cep";
+
 export class Endereco {
     private _rua: string;
     private _numero: number;
     private _bairro: string;
-    private _cep: string;
+    private _cep: CEP;
 
-    constructor(rua: string, numero: number, bairro: string, cep: string) {
+    constructor(rua: string, numero: number, bairro: string, cep: CEP) {
         this._rua = rua;
         this._numero = numero;
         this._bairro = bairro;
@@ -48,13 +50,12 @@ export class Endereco {
         }
     }
 
-    get cep(): string {
+    get cep(): CEP {
         return this._cep;
     }
 
-    set cep(cep: string) {
-        const regexCep = /^[0-9]{5}-?[0-9]{3}$/; 
-        if (regexCep.test(cep)) {
+    set cep(cep: CEP) {
+        if (cep instanceof CEP) {
             this._cep = cep;
         } else {
             throw new Error("CEP inválido! O formato correto é 12345-678.");
