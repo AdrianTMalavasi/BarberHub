@@ -3,7 +3,7 @@ import { Telefone } from "./Telefone";
 import { Email } from "./Email"; 
 import { Endereco } from "./Endereco";
 
-export class PessoaFisica extends Pessoa {
+export abstract class PessoaFisica extends Pessoa {
     private _genero: string;
     private _CPF: string;
     private _dataNascimento: Date;
@@ -28,7 +28,6 @@ export class PessoaFisica extends Pessoa {
         }
     }
 
-
     get CPF(): string {
         return this._CPF;
     }
@@ -41,7 +40,6 @@ export class PessoaFisica extends Pessoa {
             throw new Error("CPF inválido! O formato correto é XXX.XXX.XXX-XX.");
         }
     }
-
 
     get dataNascimento(): Date {
         return this._dataNascimento;

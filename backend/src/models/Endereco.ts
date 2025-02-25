@@ -5,13 +5,13 @@ export class Endereco {
     private _cep: string;
 
     constructor(rua: string, numero: number, bairro: string, cep: string) {
-        this._rua = rua; // Usa o setter para validar
+        this._rua = rua;
         this._numero = numero;
         this._bairro = bairro;
         this._cep = cep;
     }
 
-    // ✅ Getter e Setter para Rua
+
     get rua(): string {
         return this._rua;
     }
@@ -53,7 +53,7 @@ export class Endereco {
     }
 
     set cep(cep: string) {
-        const regexCep = /^[0-9]{5}-?[0-9]{3}$/; // Valida formatos como 12345-678 ou 12345678
+        const regexCep = /^[0-9]{5}-?[0-9]{3}$/; 
         if (regexCep.test(cep)) {
             this._cep = cep;
         } else {

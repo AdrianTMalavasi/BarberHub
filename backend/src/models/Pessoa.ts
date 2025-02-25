@@ -38,7 +38,6 @@ export abstract class Pessoa {
         }
     }
 
-
     getSenha(): string {
         return this._senha;
     }

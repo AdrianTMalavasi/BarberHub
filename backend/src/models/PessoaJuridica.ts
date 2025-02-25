@@ -1,65 +1,94 @@
-// import { Pessoa } from "./Pessoa";
-// import { Telefone } from "./Telefone";
-// import { Email } from "./Email"; 
-// import { Endereco } from "./Endereco";
-// import { Servico } from "./Servico";
+import { Pessoa } from "./Pessoa";
+import { Telefone } from "./Telefone";
+import { Email } from "./Email"; 
+import { Endereco } from "./Endereco";
+import { Servico } from "./Servico";
+import { Funcionario } from "./Funcionario";
 
-// export class PessoaJuridica extends Pessoa {
-//     private _CNPJ: string;
-//     private _razaoSocial: string;
-//     private _nomeFantasia: string;
-//     private _servicos: Servico;
-//     private _funcionarios : 
+export abstract class PessoaJuridica extends Pessoa {
+    private _CNPJ: string;
+    private _razaoSocial: string;
+    private _nomeFantasia: string;
+    private _servicos: Servico[];
+    private _funcionarios: Funcionario[]; 
 
-//     constructor(nome: string, login: string, senha: string, dataCadastro: Date, telefone: Telefone, email: Email, endereco: Endereco ,genero: string, CPF: string, dataNascimento: Date) {
-//         super(nome ,login ,senha ,dataCadastro ,telefone ,email,endereco)
-//         this._genero = genero;
-//         this._CPF = CPF;
-//         this._dataNascimento = dataNascimento;
-//     }
+    constructor(nome: string,login: string,senha: string,dataCadastro: Date,telefone: Telefone,email: Email,endereco: Endereco,CNPJ: string,razaoSocial: string,nomeFantasia: string,servicos: Servico[], funcionarios: Funcionario[]) {
+        super(nome, login, senha, dataCadastro, telefone, email, endereco);
+        this._CNPJ = CNPJ;
+        this._razaoSocial = razaoSocial;
+        this._nomeFantasia = nomeFantasia;
+        this._servicos = servicos;
+        this._funcionarios = funcionarios;
+    }
 
-//     get genero(): string {
-//         return this._genero;
-//     }
+    get CNPJ(): string {
+        return this._CNPJ;
+    }
 
-//     set genero(genero: string) {
-//         const generosValidos = ['Masculino', 'Feminino', 'Outro'];
-//         if (generosValidos.includes(genero)) {
-//             this._genero = genero;
-//         } else {
-//             throw new Error("Gênero inválido! Os valores válidos são: 'Masculino', 'Feminino', 'Outro'.");
-//         }
-//     }
+    set CNPJ(cnpj: string) {
+        if (/^\d{14}$/.test(cnpj)) {
+            this._CNPJ = cnpj;
+        } else {
+            throw new Error("CNPJ inválido! Deve conter 14 dígitos numéricos.");
+        }
+    }
 
+    get razaoSocial(): string {
+        return this._razaoSocial;
+    }
 
-//     get CPF(): string {
-//         return this._CPF;
-//     }
+    set razaoSocial(razaoSocial: string) {
+        if (razaoSocial.trim().length > 0) {
+            this._razaoSocial = razaoSocial;
+        } else {
+            throw new Error("Razão Social não pode ser vazia.");
+        }
+    }
 
-//     set CPF(CPF: string) {
-//         const regexCPF = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/; // Valida o formato "XXX.XXX.XXX-XX"
-//         if (regexCPF.test(CPF)) {
-//             this._CPF = CPF;
-//         } else {
-//             throw new Error("CPF inválido! O formato correto é XXX.XXX.XXX-XX.");
-//         }
-//     }
+    get nomeFantasia(): string {
+        return this._nomeFantasia;
+    }
 
+    set nomeFantasia(nomeFantasia: string) {
+        if (nomeFantasia.trim().length > 0) {
+            this._nomeFantasia = nomeFantasia;
+        } else {
+            throw new Error("Nome Fantasia não pode ser vazio.");
+        }
+    }
 
-//     get dataNascimento(): Date {
-//         return this._dataNascimento;
-//     }
+    get servicos(): Servico[] {
+        return [...this._servicos]; // Retorna uma cópia para evitar mutações externas
+    }
 
-//     set dataNascimento(dataNascimento: Date) {
-//         const hoje = new Date();
-//         if (dataNascimento <= hoje) {
-//             this._dataNascimento = dataNascimento;
-//         } else {
-//             throw new Error("Data de nascimento inválida! Não pode ser no futuro.");
-//         }
-//     }
+    set servicos(servicos: Servico[]) {
+        if (Array.isArray(servicos)) {
+            this._servicos = servicos;
+        } else {
+            throw new Error("Os serviços devem ser uma lista válida.");
+        }
+    }
 
-//     toString(): string {
-//         return `Gênero: ${this._genero}, CPF: ${this._CPF}, Data de Nascimento: ${this._dataNascimento.toLocaleDateString()}`;
-//     }
-// }
+    get funcionarios(): Funcionario[] {
+        return [...this._funcionarios]; // Retorna uma cópia para proteger a integridade dos dados
+    }
+
+    set funcionarios(funcionarios: Funcionario[]) {
+        if (Array.isArray(funcionarios)) {
+            this._funcionarios = funcionarios;
+        } else {
+            throw new Error("Os funcionários devem ser uma lista válida.");
+        }
+    }
+
+    toString(): string {
+        return `
+            ${super.toString()}  
+            CNPJ: ${this._CNPJ}
+            Razão Social: ${this._razaoSocial}
+            Nome Fantasia: ${this._nomeFantasia}
+            Serviços: ${this._servicos.length > 0 ? this._servicos.map(s => s.toString()).join(", ") : "Nenhum"}
+            Funcionários: ${this._funcionarios.length > 0 ? this._funcionarios.map(f => f.toString()).join(", ") : "Nenhum"}
+        `;
+    }
+}
